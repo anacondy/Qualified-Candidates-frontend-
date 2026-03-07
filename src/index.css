@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --font-archivo: "Archivo Black", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+  --color-neon-green: #39ff14;
+}
+
+body {
+  background-color: #d1d1d1; /* Base light grey from image */
+  color: #000000;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add noise overlay to mimic print/grain */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Subtle vignettes and smudges */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 49;
+  background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.15) 150%);
+}
+
+
+.font-brutal {
+  font-family: "Archivo Black", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+}
+
+.font-tech {
+  font-family: "Space Mono", monospace;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #d1d1d1;
+  border-left: 1px solid #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #222;
+}
+
+/* Selection */
+::selection {
+  background: #39ff14;
+  color: #000;
+}
